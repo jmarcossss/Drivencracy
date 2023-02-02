@@ -4,7 +4,7 @@ import { databasePoll } from "../database/dbs.js";
 import { databaseChoice } from "../database/dbs.js";
 import { databaseVoto } from "../database/dbs.js";
 
-export async function postVote(require, response) {
+export async function cadastroVote(require, response) {
   const { id } = require.params;
   try {
     //Faz a busca do choice
@@ -27,7 +27,7 @@ export async function postVote(require, response) {
   }
 }
 
-export async function getVote(require, response) {
+export async function solicitacaoVote(require, response) {
   const { id } = require.params;
   try {
     //Faz a busca da poll
@@ -55,18 +55,16 @@ function incrementaFunc(arr) {
   let votos = 0;
   let resulFinal = null;
   
-  for (let element of arr) {
-    if(!ocorrencias[element.title])
-      ocorrencias[element.title] = 1;
-    else
-      ocorrencias[element.title] += 1;
+  for (const element of arr) {
+    ocorrencias[element.title] = (ocorrencias[element.title] || 0) + 1;
   }
 
-  for (const title in ocorrencias) {
-    if(ocorrencias[title] > votos) {
-      votos = ocorrencias[title];
+  for (const [title, votes] of Object.entries(ocorrencias)) {
+    if (votes > votos) {
+      votos = votes;
       resulFinal = title;
     }
   }
+  
   return { title: resulFinal, votes: votos };
 }
