@@ -37,7 +37,7 @@ export async function getVote(require, response) {
       return response.status(404).send("Enquete não encontrada");
     }
     const fullChoices = await databaseChoice.find({ pollId: new ObjectId(id) }).toArray();
-    const winner = countVote(fullChoices);  
+    const winner = incrementaFunc(fullChoices);  
     let dibParam = {...poll, responseult: { ...winner }, };
     response.send(dibParam);
   }
@@ -46,4 +46,27 @@ export async function getVote(require, response) {
     console.error(err);
     response.sendStatus(500);
   }
+}
+
+//Função que contabiliza e soma a quantidade de votos
+//de uma choice de uma enquete
+function incrementaFunc(arr) {
+  const ocorrencias = {};
+  let votos = 0;
+  let resulFinal = null;
+  
+  for (let element of arr) {
+    if(!ocorrencias[element.title])
+      ocorrencias[element.title] = 1;
+    else
+      ocorrencias[element.title] += 1;
+  }
+
+  for (const title in ocorrencias) {
+    if(ocorrencias[title] > votos) {
+      votos = ocorrencias[title];
+      resulFinal = title;
+    }
+  }
+  return { title: resulFinal, votes: votos };
 }
