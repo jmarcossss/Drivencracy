@@ -38,7 +38,7 @@ export async function solicitacaoVote(require, response) {
     }
     const fullChoices = await databaseChoice.find({ pollId: new ObjectId(id) }).toArray();
     const winner = incrementaFunc(fullChoices);  
-    let dibParam = {...poll, responseult: { ...winner }, };
+    let dibParam = {...poll, result: { ...winner }, };
     response.send(dibParam);
   }
   //Erro interno do server
