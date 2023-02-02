@@ -1,5 +1,6 @@
 import joi from "joi";
 
+//Formato especificado de uma votação
 export const padraoSchemaPoll = joi.object({
   title: joi.string().min(1).required(),
   expireAt: joi
