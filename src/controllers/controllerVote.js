@@ -20,6 +20,7 @@ export async function postVote(require, response) {
     //Se tiver encontrado, imcrementa o voto em 1 unidade, status 201
     response.status(201).send("Voto registrado com sucesso");
   }
+  //Erro interno do server
   catch(err) {
     console.error(err);
     response.sendStatus(500);
@@ -29,8 +30,10 @@ export async function postVote(require, response) {
 export async function getVote(require, response) {
   const { id } = require.params;
   try {
+    //Faz a busca da poll
     let poll = await databasePoll.findOne({ _id: new ObjectId(id) });
     if(!poll) {
+      //Se não encontrar a poll, dá erro 404
       return response.status(404).send("Enquete não encontrada");
     }
     const fullChoices = await databaseChoice.find({ pollId: new ObjectId(id) }).toArray();
@@ -38,6 +41,7 @@ export async function getVote(require, response) {
     let dibParam = {...poll, responseult: { ...winner }, };
     response.send(dibParam);
   }
+  //Erro interno do server
   catch(err) {
     console.error(err);
     response.sendStatus(500);
