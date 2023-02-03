@@ -13,6 +13,6 @@ server.use(rotas);
 
 const PORTA = 5000;
 
-server.listen(process.env.PORTA, () => {
-    console.log("Servidor rodando na porta " + process.env.PORT)
+server.listen(PORTA, () => {
+    console.log("Servidor rodando na porta 5000")
 });
