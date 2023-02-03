@@ -10,4 +10,4 @@ if(error) {
 }
 response.locals.choiceData = choiceData;
 func();
-}
+} 

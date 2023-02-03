@@ -9,4 +9,4 @@ rotaPoll.post("/poll", middlewarePoll, cadastroDePoll);
 //Lista das enquetes para ser exibida
 rotaPoll.get("/poll", solicitacaoDePoll);
 
-export default rotaPoll;
+export default rotaPoll; 

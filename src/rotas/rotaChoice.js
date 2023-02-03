@@ -10,4 +10,4 @@ rotaChoice.post("/choice", middlewareChoice, cadastroChoice);
 //Lista de opções de uma enquete
 rotaChoice.get("/poll/:id/choice", solicitacaoChoice);
 
-export default rotaChoice;
+export default rotaChoice; 

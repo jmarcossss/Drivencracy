@@ -12,4 +12,4 @@ rotas.use(rotaChoice);
 //Voto das enquetes
 rotas.use(rotaEnquete);
 
-export default rotas;
+export default rotas; 

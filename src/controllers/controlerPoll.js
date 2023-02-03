@@ -30,4 +30,4 @@ export async function solicitacaoDePoll(require, response) {
     //Deu ruim, status 500
     response.sendStatus(500);
     }
-}
+} 

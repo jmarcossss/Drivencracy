@@ -31,4 +31,4 @@ export async function solicitacaoChoice(require, response) {
         //Deu ruim, status 500
         response.sendStatus(500);
     }
-}
+} 

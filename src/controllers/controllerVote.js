@@ -55,16 +55,17 @@ function incrementaFunc(arr) {
   let votos = 0;
   let resulFinal = null;
   
-  for (const element of arr) {
+  //Incrementa o valor das ocorrencias em 1, ou seja, quando receber 1 voto vai incrementar
+  for(const element of arr) {
     ocorrencias[element.title] = (ocorrencias[element.title] || 0) + 1;
   }
 
+  //Compara a quantidade de votos e vê qual a enquete que tem a maior quantidade
   for (const [title, votes] of Object.entries(ocorrencias)) {
-    if (votes > votos) {
+    if(votes > votos) {
       votos = votes;
       resulFinal = title;
     }
   }
-  
   return { title: resulFinal, votes: votos };
-}
+} 

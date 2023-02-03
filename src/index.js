@@ -8,7 +8,7 @@ dotenv.config();
 const server = express();
 server.use(cors());
 server.use(express.json());
-//Definindo o meu caminho de rotas
+//Definindo o meu caminho de rotas 
 server.use(rotas);
 
 const PORTA = 5000;
